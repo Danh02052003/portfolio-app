@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { socialLinks } from '../../data/contactData';
+import { socialLinks } from '../../data/contactData.jsx';
 
 const SocialLinks = () => {
   return (

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { contactInfo } from '../../data/contactData';
+import { contactInfo } from '../../data/contactData.jsx';
 
 const ContactInfo = () => {
   return (

@@ -20,6 +20,7 @@
   "keywords": [],
   "description": "",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@react-spring/web": "^9.7.5",
     "axios": "^1.8.2",
     "framer-motion": "^12.4.10",
