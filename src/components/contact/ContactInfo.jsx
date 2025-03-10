@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { contactInfo } from '../../data/contactData';
 
 const ContactInfo = () => {
   return (
@@ -13,7 +14,7 @@ const ContactInfo = () => {
           </div>
           <div>
             <p className="text-gray-400">Email</p>
-            <p className="text-blue-400">danhnguyen02052003@gmail.com</p>
+            <p className="text-blue-400">{contactInfo.email}</p>
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -24,7 +25,7 @@ const ContactInfo = () => {
           </div>
           <div>
             <p className="text-gray-400">Phone</p>
-            <p className="text-blue-400">(+84) 0779-050-203</p>
+            <p className="text-blue-400">{contactInfo.phone}</p>
           </div>
         </div>
       </div>

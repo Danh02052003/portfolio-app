@@ -3,37 +3,11 @@ import { useState } from 'react';
 import useGithubProjects from '../hooks/useGithubProjects';
 import ProjectCard from '../components/project/ProjectCard';
 import ProjectModal from '../components/project/ProjectModal';
+import { getLanguageColor, formatDate } from '../utils/formatters';
 
 const ProjectsPage = () => {
   const [selectedId, setSelectedId] = useState(null);
   const { projects, loading, error } = useGithubProjects('Danh02052003');
-
-  const getLanguageColor = (language) => {
-    const colors = {
-      JavaScript: '#f1e05a',
-      TypeScript: '#2b7489',
-      Python: '#3572A5',
-      Java: '#b07219',
-      HTML: '#e34c26',
-      CSS: '#563d7c',
-      PHP: '#4F5D95',
-      Ruby: '#701516',
-      'C++': '#f34b7d',
-      C: '#555555',
-    };
-    return colors[language] || '#8e8e8e';
-  };
-
-  const formatDate = (dateString) => {
-    const options = { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-    return new Date(dateString).toLocaleDateString('vi-VN', options);
-  };
 
   return (
     <section className="min-h-screen pt-24">
