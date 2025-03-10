@@ -1,48 +1,48 @@
-# Portfolio App
+# Portfolio Website
 
-A modern portfolio application built with React and Tailwind CSS, featuring GitHub integration to showcase your projects.
+My personal portfolio website built with React, showcasing my projects and skills.
 
 ## Features
 
-- 🎨 Modern UI with gradient designs
-- 🔄 Real-time GitHub repository integration
-- 📊 Project statistics and language usage
-- ⚡ Smooth animations and transitions
-- 📱 Responsive design
-- 🌙 Dark mode
+- Modern and responsive design
+- Project showcase with GitHub integration
+- Contact form with EmailJS integration
+- Animated UI components using Framer Motion
+- Dark theme with gradient accents
 
-## Technologies Used
+## Tech Stack
 
 - React
+- Vite
 - Tailwind CSS
 - Framer Motion
-- GitHub API
-- Vite
+- EmailJS
 
 ## Getting Started
 
-1. Clone the repository:
+1. Clone the repository
 ```bash
-git clone [your-repo-url]
-cd portfolio-app
+git clone https://github.com/YourUsername/portfolio-app.git
 ```
 
-2. Install dependencies:
+2. Install dependencies
 ```bash
 npm install
 ```
 
-3. Create a `.env.local` file in the root directory and add your GitHub token:
-```
-VITE_GITHUB_TOKEN=your_github_token
-```
-
-4. Start the development server:
+3. Start the development server
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+4. Build for production
+```bash
+npm run build
+```
+
+## Deployment
+
+This site is deployed on Vercel. Any push to the main branch will trigger automatic deployment.
 
 ## Project Structure
 
