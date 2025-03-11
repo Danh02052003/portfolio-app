@@ -13,10 +13,10 @@ const ContactForm = () => {
     setStatus({ type: '', message: '' });
 
     emailjs.sendForm(
-      'service_68y9rzr', 
-      'template_g8jogqo',
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       form.current,
-      'ZG_gcEQp7TpeTmtZi'
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
       .then(() => {
         setStatus({
