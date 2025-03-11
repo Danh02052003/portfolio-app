@@ -1,69 +1,112 @@
 import { motion } from 'framer-motion';
+import { FaGithub, FaStar, FaCodeBranch, FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
 
-const ProjectModal = ({ project, onClose, formatDate }) => {
+const ProjectModal = ({ project, onClose, formatDate, getLanguageColor }) => {
+  if (!project) return null;
+
   return (
     <motion.div
-      layoutId={`project-${project.id}`}
-      className="bg-gray-900 p-8 rounded-2xl w-full max-w-2xl"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
       onClick={(e) => e.stopPropagation()}
+      className="bg-gray-800/90 backdrop-blur-lg rounded-xl w-full max-w-2xl p-6 relative border border-gray-700/50"
     >
-      <div>
-        <div className="flex justify-between items-start mb-6">
-          <h2 className="text-2xl font-bold text-blue-400">
-            {project.name}
-          </h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-white"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+      >
+        <FaTimes size={20} />
+      </button>
 
-        <div className="mb-6">
-          <p className="text-gray-300 mb-4">
-            {project.description}
-          </p>
-          
-          {/* Detailed Time Info */}
-          <div className="space-y-2 text-sm text-gray-400">
-            <p>Created: {formatDate(project.createdAt)}</p>
-            <p>Last Updated: {formatDate(project.updatedAt)}</p>
-            {project.lastCommit && (
-              <div>
-                <p>Last Commit: {formatDate(project.lastCommit.date)}</p>
-                <p>Commit Message: {project.lastCommit.message}</p>
-                <p>Author: {project.lastCommit.author}</p>
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+          <FaGithub className="text-blue-400" />
+          {project.name}
+        </h2>
+        <p className="text-gray-300">{project.description}</p>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="flex items-center gap-2 text-gray-300">
+          <FaStar className="text-yellow-400" />
+          {project.stars} stars
+        </div>
+        <div className="flex items-center gap-2 text-gray-300">
+          <FaCodeBranch className="text-blue-400" />
+          {project.forks} forks
+        </div>
+      </div>
+
+      {/* Details */}
+      <div className="space-y-4 mb-6">
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-2">Languages</h3>
+          <div className="flex flex-wrap gap-2">
+            {project.languages?.map((lang) => (
+              <div
+                key={lang.name}
+                className="px-3 py-1 text-sm rounded-full"
+                style={{
+                  backgroundColor: `${getLanguageColor(lang.name)}20`,
+                  color: getLanguageColor(lang.name),
+                }}
+              >
+                {lang.name} ({lang.percentage}%)
               </div>
-            )}
+            ))}
           </div>
         </div>
 
-        <div className="flex space-x-4">
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-2">Topics</h3>
+          <div className="flex flex-wrap gap-2">
+            {project.topics?.map((topic) => (
+              <span
+                key={topic}
+                className="px-3 py-1 text-sm rounded-full bg-purple-500/10 text-purple-400"
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-2">Timeline</h3>
+          <div className="text-gray-300 space-y-1">
+            <p>Created: {formatDate(project.createdAt)}</p>
+            <p>Last updated: {formatDate(project.updatedAt)}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="flex gap-4">
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          <FaGithub /> View on GitHub
+        </a>
+        {project.homepage && (
           <a
-            href={project.url}
+            href={project.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400/10 transition-colors"
           >
-            View on GitHub
+            <FaExternalLinkAlt /> Live Demo
           </a>
-          {project.homepage && (
-            <a
-              href={project.homepage}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full border border-blue-400 text-blue-400 hover:bg-blue-400/10 transition-colors"
-            >
-              Live Demo
-            </a>
-          )}
-        </div>
+        )}
       </div>
     </motion.div>
   );
 };
 
-export default ProjectModal; 
+export default ProjectModal;

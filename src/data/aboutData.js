@@ -4,12 +4,12 @@ export const skills = [
     items: ["React", "Vue.js", "Tailwind CSS", "Bootstrap", "HTML", "CSS", "JavaScript"]
   },
   {
-    category: "Mobile",
-    items: ["Java", "Android Studio", "Mobile Development"]
+    category: "Backend",
+    items: ["Node.js", "Express", "MongoDB", "MySQL", "RESTful APIs"]
   },
   {
-    category: "Testing & Tools",
-    items: ["Selenium", "Git", "Github", "UI/UX Design", "Problem Solving"]
+    category: "Tools & Others",
+    items: ["Git", "GitHub", "VS Code", "Postman", "Figma", "Responsive Design"]
   }
 ];
 
